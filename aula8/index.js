@@ -9,7 +9,7 @@ result = num1 / num3;
 result = num1 % num3;
 result = num2 ** num1;
 result = 0;
-++result;
+++result;  
 --result;
 result = 10;
 result += 2;
@@ -22,5 +22,6 @@ result = false;
 result = true;
 result = 10;
 result = 10 * ((2 + 4) / 5 * 8)
-
-console.log(result);
+result = String(result)
+result = Number(result);
+console.log(typeof(result), result);

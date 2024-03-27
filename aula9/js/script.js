@@ -1,0 +1,1 @@
+let num1 = prompt("Digite o primeiro número: ");
