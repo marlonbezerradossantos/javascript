@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício de string</title>
+</head>
+<body>
+    <script>
+        const nome = prompt('Digite seu nome completo: ')
+        window.document.body.innerHTML = `<h1>Seu nome é: ${nome}.</h1>`;
+        window.document.body.innerHTML += `<h1>Seu nome tem ${nome.length - 3} letras.</h1>`;
+        window.document.body.innerHTML += `<h1>A segunda letra do seu nome é: ${nome[1]}.`;
+        window.document.body.innerHTML += `<h1>Qual o primeiro índice da LETRA "O" no seu nome?: ${nome}.`;
+        window.document.body.innerHTML += `<h1>Qual o último índice da LETRA "O" no seu nome?: ${nome}.`;
+        window.document.body.innerHTML += `<h1>As últimas 3 letras do seu nome são: ${nome}.</h1>`;
+        window.document.body.innerHTML += `<h1>As palavras do seu nome são: ${nome}.`;
+        window.document.body.innerHTML += `<h1>Seu nome com letras maíusculas: ${nome}.`;
+        window.document.body.innerHTML += `<h1>Seu nome com letras minúsculas: ${nome}.`
+    </script>
+</body>
+</html>
