@@ -4,6 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Exercício de string</title>
+    <style>
+        body {
+            background-color: lightblue;
+        }
+         
+        h1 {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 1.6rem;
+        }
+    </style>
 </head>
 <body>
     <script>
@@ -11,12 +21,12 @@
         window.document.body.innerHTML = `<h1>Seu nome é: ${nome}.</h1>`;
         window.document.body.innerHTML += `<h1>Seu nome tem ${nome.length - 3} letras.</h1>`;
         window.document.body.innerHTML += `<h1>A segunda letra do seu nome é: ${nome[1]}.`;
-        window.document.body.innerHTML += `<h1>Qual o primeiro índice da LETRA "O" no seu nome?: ${nome}.`;
-        window.document.body.innerHTML += `<h1>Qual o último índice da LETRA "O" no seu nome?: ${nome}.`;
-        window.document.body.innerHTML += `<h1>As últimas 3 letras do seu nome são: ${nome}.</h1>`;
-        window.document.body.innerHTML += `<h1>As palavras do seu nome são: ${nome}.`;
-        window.document.body.innerHTML += `<h1>Seu nome com letras maíusculas: ${nome}.`;
-        window.document.body.innerHTML += `<h1>Seu nome com letras minúsculas: ${nome}.`
+        window.document.body.innerHTML += `<h1>Qual o primeiro índice da LETRA "O" no seu nome?: ${nome.indexOf('o')}.`;
+        window.document.body.innerHTML += `<h1>Qual o último índice da LETRA "O" no seu nome?: ${nome.lastIndexOf('o')}.`;
+        window.document.body.innerHTML += `<h1>As últimas 3 letras do seu nome são: ${nome.slice(-3)}.</h1>`;
+        window.document.body.innerHTML += `<h1>As palavras do seu nome são: ${nome.split(' ', 4)}.`;
+        window.document.body.innerHTML += `<h1>Seu nome com letras maíusculas: ${nome.toUpperCase()}.`;
+        window.document.body.innerHTML += `<h1>Seu nome com letras minúsculas: ${nome.toLowerCase()}.`
     </script>
 </body>
 </html>
