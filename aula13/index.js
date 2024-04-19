@@ -1,0 +1,1 @@
+console.log(Math.floor(Math.random() * (60 - 50 + 1)) + 50);
