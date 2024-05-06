@@ -9,3 +9,4 @@ delete nomes[2];
 const sliced = nomes.slice(0, 2)
 console.log(sliced);
 console.log(nomes);
+  
