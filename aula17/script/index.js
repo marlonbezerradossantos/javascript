@@ -1,6 +1,6 @@
 const objetos = [];
 function meuEscopo() {
-    let form = document.querySelector('.form'); 
+    let form = document.querySelector('.form'); //anotar isso
     function eventoListener (evento) {
         evento.preventDefault();
         const nome = form.querySelector('.nome');
@@ -15,13 +15,13 @@ function meuEscopo() {
             return {
                 nome, 
                 sobrenome, 
-                altura, const lista = ['YA', 'BISH'];
+                altura, 
                 peso
             }
         };
         objetos.push(criaObjetos(nome.value, sobrenome.value, altura.value, peso.value));
         console.log(objetos);
     };
-    form.addEventListener('submit', eventoListener);
+    form.addEventListener('submit', eventoListener); //anotar isso?
 }
 meuEscopo();
