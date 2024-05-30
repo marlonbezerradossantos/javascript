@@ -20,7 +20,7 @@ body {
     background-color: white;
     border-radius: 10px;
     box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.411);
-    margin: 1.8% auto;
+    margin: 1.3% auto;
     padding: 2%;
     width: 40%;
 }
@@ -35,7 +35,7 @@ body {
 .container__lista {
     display: flex;
     column-gap: 10%;
-    margin-bottom: 5%;
+    margin-bottom: 2%;
 }
 
 .lista {
@@ -43,6 +43,7 @@ body {
 }
 
 .lista__title {
+    color: rgba(0, 0, 255, 0.815);
     font-size: 2.5rem;
     margin-bottom: 3%;
 }
@@ -98,6 +99,7 @@ li {
     background-color: rgba(0, 255, 255, 0.548);
     font-size: 2rem;
     font-weight: 500;
+    text-align: center;
 }
 
 
