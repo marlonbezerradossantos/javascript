@@ -8,9 +8,9 @@ send.addEventListener("click", function(event) {
     altura = Number(altura.value);
     console.log(altura, typeof(altura))
     const resultado = document.querySelector(".resultado");
-    if (peso === 0) {
+    if (peso === 0 || peso === NaN) {
         resultado.innerHTML = `<p style="padding: 2%; background-color: rgba(255, 0, 0, 0.568); border: 2px solid black;">Peso inválido!</p>`
-    } else if (altura === 0) {
+    } else if (altura === 0 || altura === NaN) {
         resultado.innerHTML = `<p style="padding: 2%; background-color: rgba(255, 0, 0, 0.568); border: 2px solid black;">Altura inválida!</p>`
     } else {
         const imc = (peso / (altura * altura)).toFixed(2);
