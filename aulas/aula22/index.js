@@ -1,9 +1,7 @@
+const botao = document.querySelector(".btn");
+botao.addEventListener("click", mudaTexto);
 
-const btn = document.querySelector(".btn");
-function mudaTexto(){
-    const texto = document.querySelector("text");
-    texto.innerHTML = "Mudou";
+function mudaTexto() {
+    const texto = document.querySelector("#text");
+    texto.innerHTML = "<p>Texto Alterado</p>"
 }
-
-btn.addEventListener("click", mudaTexto());
-
