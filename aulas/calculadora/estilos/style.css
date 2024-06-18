@@ -76,6 +76,8 @@ body {
 }
 
 .estilo {
+    background-color: rgba(0, 255, 255, 0.445);
+    font-weight: bolder;
     margin-top: 2%;
     padding: 2%;
 }

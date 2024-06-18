@@ -16,7 +16,7 @@ soma.addEventListener("click", function(e){
     const resultado = num1 + num2;
     paragrafo.classList.add('estilo');
     paragrafo.innerHTML = `RESULTADO = ${resultado}.`;
-    
+    saida.append(paragrafo);
 })
 
 subtracao.addEventListener("click", function(e){
@@ -28,7 +28,7 @@ subtracao.addEventListener("click", function(e){
     const resultado = num1 - num2;
     paragrafo.classList.add('estilo');
     paragrafo.innerHTML = `RESULTADO = ${resultado}.`
-    
+    saida.append(paragrafo);
 })
 
 multiplicacao.addEventListener("click", function(e){
@@ -40,7 +40,7 @@ multiplicacao.addEventListener("click", function(e){
     const resultado = num1 * num2;
     paragrafo.classList.add('estilo');
     paragrafo.innerHTML = `RESULTADO = ${resultado}.`
-    
+    saida.append(paragrafo);
 })
 
 divisao.addEventListener("click", function(e){
@@ -52,9 +52,9 @@ divisao.addEventListener("click", function(e){
     const resultado = num1 / num2;
     paragrafo.classList.add('estilo');
     paragrafo.innerHTML = `RESULTADO = ${resultado}.`
-    
+    saida.append(paragrafo);
 })
 
-saida.append(paragrafo);
+
 
 
