@@ -33,46 +33,8 @@ body {
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.521);
 }
 
-.paragraph {
-    font-size: 1.9rem;
-    margin: 2% auto 4%;
-    text-align: justify;
-    text-indent: 30px;
-}
-
-.group {
-    margin: 2% 0%;
-}
-
-.label, .input {
-    font-size: 2rem;
-}
-
-.label {
-    color: rgb(7, 85, 202);
-}
-
-.input {
-    font-size: 1.8rem;
-    width: 40%;
-    text-indent: 5px;
-}
-
-.input-send {
-    background-color: rgba(12, 11, 99, 0.911);
-    border: 2px solid black;
-    color: aliceblue;
-    font-size: 1.5rem;
-    font-weight: 700;
-    padding: 1% 3%;
+.hora {
+    font-size: 2.5rem;
+    font-weight: bold;
     text-align: center;
-    width: 20%;
 }
-
-.input-send:hover {
-    background-color: rgba(12, 11, 99, 0.712);
-    cursor: pointer;
-}
-
-
-

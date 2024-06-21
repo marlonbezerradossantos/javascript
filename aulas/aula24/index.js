@@ -1,10 +1,13 @@
-const data = new Date();
-data.setFullYear(2005);
-data.setMonth(7);
-data.setDate(6)
-data.setHours(9);
-data.setMinutes(43);
-data.setSeconds(2);
-data.setMilliseconds(2)
+const dia = new Date()
 
-console.log(data.toString(), data.getMilliseconds());  
+switch (2023) {
+    case 2021:
+    case 2022:
+        console.log('Eu era menor de idade')
+        break;
+    case 2023:
+        console.log('Eu era maior de idade')
+        break;
+    default:
+        console.log('n sabemos')
+}
