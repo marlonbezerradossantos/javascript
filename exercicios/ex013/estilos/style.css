@@ -33,8 +33,6 @@ body {
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.521);
 }
 
-.hora {
-    font-size: 2.5rem;
-    font-weight: bold;
-    text-align: center;
+.classe {
+    font-size: 2rem;
 }

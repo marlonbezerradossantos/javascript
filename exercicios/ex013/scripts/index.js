@@ -5,5 +5,14 @@ const elementos = [
     {tag: 'section', texto: 'Frase 4'}
 ]
 
-const [p, div, footer, section] = elementos;
-console.log(p.texto)
+const container = document.querySelector('.container');
+const criaDiv = document.createElement('div');
+criaDiv.classList.add('classe')
+container.appendChild(criaDiv);
+
+for (let i = 0; i < elementos.length; i++) {
+    const {tag, texto} = elementos[i];
+    const criaElemento = document.createElement(tag)
+    criaElemento.innerText = texto;
+    criaDiv.appendChild(criaElemento);
+}
