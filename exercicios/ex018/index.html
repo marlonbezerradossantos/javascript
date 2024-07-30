@@ -7,14 +7,21 @@
 </head>
 <body>
     <h1>PAR OU ÍMPAR</h1>
-    <input type="text" class="leia">
-    <input type="submit" value="Enviar">
-    <span class="output"></span>
+    <button class="start" onclick="parOuImpar()">Clique para iniciar</button> <br>
+    <span class="output" ></span>
+    
 
     <script>
-        const num = document.querySelector('.leia')
-        const output = document.querySelector('.output')
-        output.innerHTML = num.value;
+        function parOuImpar() {
+            const num = prompt('Digite um número: ');
+            const output = document.querySelector('.output');
+            try {
+                if(x.trim() == "") throw "empty";
+            } catch (error) {
+                output.innerHTML = "err"
+            }
+        }
+        
     </script>
 </body>
 </html>
