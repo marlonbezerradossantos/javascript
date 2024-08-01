@@ -1,10 +1,24 @@
-const num = 200;
-try {
-   //if(num > 5) throw 'Maior que 5'
-   if (!isNaN(num)) {
-    throw new Error('tem q ser maior q 5');
-   }
-} catch(err) {
-    console.log(err)
-   
+function funcao1(){
+    try {
+        console.lug(1)
+    } catch (error) {
+        console.log(error.message)
+        throw error
+    }
 }
+
+function funcao2(){
+    asfdf;
+}
+  
+function main() {
+    try {
+        funcao1()
+        funcao2()
+    } catch (error) {
+        console.log(error.message)
+    }
+    console.log('executado bro')
+}
+
+main()
