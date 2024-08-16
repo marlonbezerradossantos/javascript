@@ -35,7 +35,12 @@ body {
 
 .timer {
     text-align: center;
-    font-size: 3rem;
+    font-size: 5rem;
 }
 
 
+.start, .pause, .reset {
+    font-size: 1.5rem;
+    font-weight: 700;
+    padding: 0.5%;
+}
