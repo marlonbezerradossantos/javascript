@@ -15,6 +15,6 @@ function geradorDeHashtag(str) {
        tag[c] = palavra
     }
     tag = tag.join('')
-    return tag.length >= 139 ? false : `#${tag}`
+    return tag.length >= 139 ? false : "#" + tag;
 }
-console.log(geradorDeHashtag('computador e legal'))
+console.log(geradorDeHashtag('venha treinar no codewars'))
