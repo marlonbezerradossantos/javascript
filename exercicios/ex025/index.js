@@ -1,30 +1,30 @@
 // escreva uma função que receba uma string e retorne a quantidade de caracteres que se repetem mais de uma vez
 
-function contaDuplicados(str){
-    str = str.split('');
-    let letra = 0;
+function contaDuplicados(str) {
+    let bckp = '';
     let duplicados = 0;
-    for(;letra < str.length; letra++) {
-        let cont = 0;
-        for(c of str) {
-            if(str[letra] === c && str[letra] !== null) {
-                cont++
-                console.log(cont)
-            } //? cont++ : cont += 0;
+    let letra = 0;
+    let cont = 0;
+    str = str.toUpperCase()
+    str = str.split('')
+    for (; letra < str.length; letra++) {
+        for (c of str) {
+            if (str[letra] === c && str[letra] !== undefined) { cont++ }
         }
-        letra = 0;
-        if(cont >  1){
-            duplicados += 1
-            const x = str[letra]
-            for(i of str) {
-                if (i === x) i = null;
+        if (cont > 1) {
+            bckp = str[letra];
+            duplicados++
+            for (i in str) {
+                if (bckp === str[i] && str[i] !== undefined) {
+                    str[i] = undefined
+                    letra = 0; 
+                } 
             }
+        cont = 0;
         }
-        
     }
-    return duplicados
+    return duplicados;
 }
-
-console.log(contaDuplicados('aabbcccdefg'))
+console.log(contaDuplicados('ABBA'))
 
 
