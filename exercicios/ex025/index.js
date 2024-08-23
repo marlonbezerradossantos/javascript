@@ -5,8 +5,7 @@ function contaDuplicados(str) {
     let duplicados = 0;
     let letra = 0;
     let cont = 0;
-    str = str.toUpperCase()
-    str = str.split('')
+    str = str.toUpperCase().split('')
     for (; letra < str.length; letra++) {
         for (c of str) {
             if (str[letra] === c && str[letra] !== undefined) { cont++ }
@@ -25,6 +24,6 @@ function contaDuplicados(str) {
     }
     return duplicados;
 }
-console.log(contaDuplicados('ABBA'))
+console.log(contaDuplicados('ABbA'))
 
 
