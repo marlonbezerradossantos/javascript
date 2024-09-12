@@ -1,22 +1,44 @@
 // Escreva uma função que receba uma lista de arrays contendo intervalos entre dois números, retorne a soma destes interalos valores sobrepostos de intervalos devem ser contabilizados somente uma vez.
 
-// function somaIntervalos(arr) {
-//    console.log(arr)
-//    for(c = 0; c < arr.length; c++) {
-//     let bckp = c[0]
-//           // 0       // 1
-//     if(arr[0][1] > arr[0 + 1][1]) {
-//           // 0
-//         arr[0] = arr[0 + 1]
-//         arr[0 + 1] = arr[0]
-//         c = 0
-//     }
-//    }
-//    console.log(arr)
-// }
+function somaIntervalos(arr) {
+    const repete = []
+    let newArr = []
+    
+    arr.map(function(x){
+        const bckp = x.pop()
+        for(c = x[0] + 1; c < bckp; c++){
+            x.push(c)
+        }
+        x.push(bckp)
+    })
+    
+    
+//////////////////////////////
+    for(c of arr) {
+        for(i of c) {
+            newArr.push(i)
+        }
+    }
+    for(c = 0; c < newArr.length; c++) {
+        if(newArr[c] > newArr[c + 1]) {
+            const bckp = newArr[c]
+            newArr[c] = newArr[c + 1]
+            newArr[c + 1] = bckp
+            c = 0
+        }
+    }
 
-// console.log(somaIntervalos([[1, 5],[2, 20],[3, 10]]))
+    console.log(newArr)
+    
+    for(c in newArr) {
+        for(i in arr) {
+            //console.log(`Comparando o Index: ${i} com o numero ${arr[i]} /// array completo = ${arr[i]}`)
+            if(arr[i].includes(newArr[c])) {
+                repete.includes(i) ? '' : repete.push(i)
+            } 
+        }
+    }
+    console.log(repete)
+}
 
-let lista = [[1], [2], [3]];
-lista[1] = lista[2];
-console.log(lista)
+console.log(somaIntervalos([[1, 4],[3, 5], [8, 10]]))
