@@ -1,0 +1,42 @@
+[1, 2, 3, 4, 5]
+[1, 2, 3, 4, 5, 6]
+            [5, 6, 7, 8, 9, 10, 11]
+                           [10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+                                                   [16, 17, 18, 19]
+
+
+
+
+
+
+[1, 2, 3, 4, 5]
+              [6]
+                 [7, 8, 9, 10, 11]
+                                  [12, 13, 14, 15, 16, 17, 18, 19, 20]
+                                                    []
+
+//comparar o de cima com o de baixo, apagando os repetidos do array de baixo
+
+
+[1, 2, 3, 4]
+            [5]
+                [8, 9, 10]
+
+//////
+
+
+[1, 2, 3, 4]  = 3
+            [7, 8, 9, 10] = 3
+      [5] = 1/0
+
+Fazer um for que compare o array em questão com os arrays seguintes sem comparar consigo mesmo, se o array base encontrar alguma repetição nos arrays seguintes, ele então apagará o item repetido
+
+for(c = 0; c < newArr.length; c++) {
+        if(newArr[c] > newArr[c + 1]) {
+            const bckp = newArr[c]              /// bota em ordem
+            newArr[c] = newArr[c + 1]
+            newArr[c + 1] = bckp
+            c = 0
+        }
+    }
+
