@@ -1,5 +1,7 @@
 // Escreva uma função que receba uma lista de arrays contendo intervalos entre dois números, retorne a soma destes intervalos valores sobrepostos de intervalos devem ser contabilizados somente uma vez.
 
+// 4 kyu = (Limite)
+
 function somaIntervalos(arr) {
     const repete = []
     let newArr = []
