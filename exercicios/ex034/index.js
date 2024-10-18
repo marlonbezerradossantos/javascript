@@ -4,6 +4,7 @@ function incrementaString(str) {
     let index = 0
     let newStr = []
     if(isNaN(Number(str[str.length - 1])) === true) {str = str + 0}
+
     for(c = (str.length - 1); c >= 0; c--) {
         if(isNaN(str[c]) === true) {
             index = c + 1
@@ -25,3 +26,4 @@ console.log(incrementaString('Foobar00'))
 console.log(incrementaString('Foobar0000'))
 console.log(incrementaString('Foobar71'))
 console.log(incrementaString('F22ooba3r100000'))
+console.log(incrementaString('F22ooba3r'))
