@@ -1,7 +1,9 @@
 // Estudo de Expressões Regulares - (RegEx)
 
-const texto = "25/10/24"
-const regex = /\d{2}/\d{2}/\d{4}/gi;
-//console.log(texto.match(/(Olá,) (meu nome)/gi))
-console.log(texto.replace(regex, "$2/$1/$3"))
-//console.log(texto)
+// const nome = 'Marlon Bezerra dos Santos'
+// regex = /(([a-z]+) ([a-z]+)) ([a-z]+) ([a-z]+)/gi
+// const texto = nome.replace(regex, "$4 $5 $1 $2 $3 $1")
+// console.log(texto)
+const texto = "Essa piada foi muito boa ashuashuashuashuashua"
+console.log(texto.match(/\S+/g))
+
