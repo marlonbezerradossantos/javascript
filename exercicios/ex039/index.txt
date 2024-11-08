@@ -1,0 +1,12 @@
+/ console.log(scramble('rkqodlw',           'world'      ),1) //
+// console.log(scramble('cedewaraaossoqqyt', 'codewars'   ),2) //
+// console.log(scramble('katas',             'steak'      ),3) //
+//
+// console.log(scramble('scriptingjava',     'javascript' ),5) //
+// console.log(scramble('scriptsjava',       'javascripts'),6) //
+ //
+// console.log(scramble('jscripts',          'javascript' ),8) //
+// console.log(scramble('aabbcamaomsccdd',   'commas'     ),9) //
+// console.log(scramble('commas',            'commas'     ),10) //
+// console.log(scramble('sammoc',            'commas'     ),11) //
+//console.log(scramble('javscripts',        'javascript' ),7) //false

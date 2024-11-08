@@ -1,15 +1,20 @@
 // Crie uma função que irá aceitar duas strings, a primeira conterá uma sequência de caracteres aleatórios, a segunda conterá uma palavra, seu trabalho é avaliar se com os caracteres da primeira string pode-se formar a palavra da segunda string.
 
-function scramble(str1, str2){
-    let result = true
-    const comp = str1.length
-    str2 = str2.split("");
-    str2.map(function(x) {
-        if(str1.search(x) !== -1) {
-            result = false
+function scramble(str1, str2) { 
+    for(c in str2) {
+        let result = str1.search(str2[c]); 
+        if(result >= 0) {
+            str1 = str1.split("")
+            str1.splice(result, 1)
+            str1 = str1.join("")
+        } else {
+            return false
         }
-    })
-    return result
+   }
+   return true
 }
 
-console.log(scramble('cedewaraaossoqqyt', 'codewars'))
+console.log(scramble('rkqodlw', 'world')) // true
+console.log(scramble('scriptjavx', 'javascript' )) // == false
+console.log(scramble('cedewaraaossoqqyt', 'codewars')) // true
+console.log(scramble('katas', 'steak')) // false
