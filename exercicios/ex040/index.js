@@ -25,9 +25,7 @@ function rot13(str) {
             continue
         }
         let index = alfabeto.indexOf(str[c])
-        numero = soma13(index)  
-        
-
+        index = soma13(index)  
     }
 }
 rot13(texto)
