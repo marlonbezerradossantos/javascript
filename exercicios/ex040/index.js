@@ -2,33 +2,28 @@
 
 // Seu trabalho é desenvolver uma função que decodifique a resposta da piada usando o ROT-13, uma cifra de césar cujo a chave é mover 13 casas do alfabeto.
 
-
-// const alfabeto = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
-
-
 let texto = "Va gur ryringbef, gur rkgebireg ybbxf ng gur BGURE thl'f fubrf."
-
 function rot13(str) {
-    const alfabeto = "abcdefghijklmnopqrstuvwxyz"
-    str = str.toLowerCase()
+    let alfabeto = "abcdefghijklmnopqrstuvwxyz"
+    str = str.split('')
     function soma13(num) {
         for(c = 1; c <= 13; c++) {
             num <= 24 ? num++ : num = 0
         }
-        console.log(num)
         return num
     }
-    //console.log(soma13(2))
-    str = str.split('')
-    for(c = 0; c <= str.length; c++) {
+    for(c in str) {
+        /[A-Z]/.test(str[c]) === true ? alfabeto = alfabeto.toUpperCase() : alfabeto = alfabeto.toLowerCase()
         if(!/[A-Za-z]/.test(str[c])) {
             continue
         }
         let index = alfabeto.indexOf(str[c])
-        index = soma13(index)  
+        str[c] = alfabeto[soma13(index)]
     }
+   str = str.join('')
+   return str
 }
-rot13(texto)
+console.log(rot13(texto))
 
 
 // uma forma de aplicar a função soma13 e substituir os caracteres somente nas letras ignorando espaços e etc
