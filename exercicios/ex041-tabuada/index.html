@@ -3,13 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Exercicio tabuada</title>
 </head>
 <body>
-    
     <button class="mostra">Mostra tabuada</button>
     <button class="apaga">Apaga tabuada</button>
-   
     <script>
         const container = document.createElement("div")
         const mostraTabuada = document.querySelector(".mostra")
@@ -21,13 +19,11 @@
             let titulo = document.createElement("h1")
             titulo.innerHTML = `Esta é a tabuada do ${num}`
             container.appendChild(titulo)
-                
             for(i = 1; i <= 1000; i++){
                 let paragrafo = document.createElement("p")
                 paragrafo.innerHTML = `${num} x ${i} = ${num * i}`
                 container.appendChild(paragrafo)
             }
-            
             apagaTabuada.addEventListener("click", function(){
                 container.remove()
             })
