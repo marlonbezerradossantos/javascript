@@ -1,3 +1,4 @@
+"use strict"
 // crie duas funções, uma que codifique um número decimal em um número maia, e outro que codifique um número maia em um número decimal
 
 function paraDecimal(str) {
@@ -6,10 +7,10 @@ function paraDecimal(str) {
     let indiceBase = 0
     let resultado = 0;
     let contaNumeros = 0
-    for(linha of str) {
+    for(let linha of str) {
         if(linha.includes('.')) {
             let contaPontos = 0
-            for(carac of linha) {
+            for(let carac of linha) {
                 if(carac === ".") {
                     contaPontos++
                 }
@@ -27,64 +28,106 @@ function paraDecimal(str) {
     }
     return resultado += contaNumeros * basesNumericas[indiceBase]
 }
-//console.log(paraDecimal("  .  \n-----\n-----\n     \n   0   \n     \n-----")) //1811
+// console.log(paraDecimal("  .  \n-----\n-----\n     \n   0   \n     \n-----")) //1811
+//console.log(paraDecimal(" ..  \n-----\n     \n  0  \n     \n  .  \n     \n  0  \n     \n  .  "))
 
-
-function paraMaia(num) {
+function paraMaia(num) { 
     const symbols = {
-        zero: "  0  ",
-        um: "  .  ",
-        dois: " ..  ",
-        tres: " ... ",
-        quatro: ".... ",
-        cinco: "-----",
-        pula: "     "
+        "0": "  0  \n",
+        "1": "  .  \n",
+        "2": " ..  \n",
+        "3": " ... \n",
+        "4": ".... \n",
+        "5": "-----\n",
+        pula: "     \n"
     }
-    const bases = [1, 20, 360, 7200, 144000, 2880000]
-    let indiceBase = 0;
-    let resultado = 0;
-    let somaNums = 0
+    let contaPontos = 0;
+    const limites = [144000, 7200, 360, 20, 1]
+    let final = "";
+    // final = symbols["4"] + symbols["1"] + symbols["3"]
 
-    // while(somaNums < 359 && somaNums < num){
-    //     somaNums += 20
-    //     console.log(somaNums)
-    // }
-    // while(somaNums < 7199 && somaNums < num) {
-    //     somaNums += 360
-    //     console.log(somaNums)
-    // }
-    // while(somaNums < 143999 && somaNums < num) {
-    //     somaNums += 7200
-    //     console.log(somaNums)
-    
-    // } while(somaNums < 2879999 && somaNums < num) {
-    //     somaNums += 144000
-    //     console.log(somaNums)
-    // }
-
-
-    const breaksESomas = {
-        "359": 20,
-        "7199": 360,
-        "143999": 7200,
-        "2879999": 144000
-    }
-    controle = 0;
-    function acumula(quebra, soma) {
-        quebra = Number(quebra)
-        while(somaNums < quebra && somaNums < num) {
-            somaNums += soma
-            //console.log(somaNums)
+    const loopDedutor = (x) => {
+        contaPontos = 0;
+        while(num >= x){
+            num -= x
+            contaPontos++ 
         }
-     
-        controle++
-        
     }
+    // DEPURAR A FUNÇÃO ABAIXO!!!
+    const criaSimbolo = (pontos) => {
+        let stringBase = "";
+        while(pontos > 0) {
+            if(pontos === 0) {
+                stringBase += symbols["0"]
+            }
+            if(pontos > 5) {
+                while(pontos >= 5) {
+                    pontos -= 5
+                    stringBase += symbols["5"] 
+                }
+            } 
 
-    for(c in breaksESomas) {
-        acumula(c, breaksESomas[c])
+            if (pontos < 5){
+                for(let key in symbols) {
+                    if(Number(key) === pontos) {
+                        pontos -= Number(key)
+                        stringBase += symbols[key]
+                    }
+                }
+            }
+        }
+        stringBase += symbols.pula
+        final += stringBase
     }
+    
+    const deduz = () => {
+        if(num <= 2880000 && num >= 14400){
+            //deduz de 144000 em 144000
+            loopDedudor(limites[0])
+            criaSimbolo(contaPontos)
+        } else {
+            criaSimbolo(0)
+
+        }
+        
+        if(num <= 144000 && num >= 7200) {
+            // deduz de 7200 em 7200
+            loopDedutor(limites[1])
+            criaSimbolo(contaPontos)    
+        } else {
+            criaSimbolo(0)
+        }
+        
+        if(num <= 7200 && num >= 360) {
+            // deduz de 360 em 360
+            loopDedutor(limites[2])
+            criaSimbolo(contaPontos)  
+        } else {
+            criaSimbolo(0)
+        }
+        
+        if(num <= 360 && num >= 20) {
+            // deduz de 20 em 20
+            loopDedutor(limites[3])
+            criaSimbolo(contaPontos)     
+        } else {
+            criaSimbolo(0)
+        }
+
+        if(num <= 19){
+            //deduz de 1 em q
+            loopDedutor(limites[4])
+            criaSimbolo(contaPontos)      
+        } else {
+            criaSimbolo(0)
+        }
+    }
+    
+    while(num > 0) {
+        deduz()
+    }
+    console.log(final)
 }
 
-
-paraMaia(1794)
+paraMaia(360)
+// paraMaia(1794)
