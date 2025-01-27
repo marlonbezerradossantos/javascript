@@ -43,7 +43,8 @@ function paraMaia(num) {
     }
     let contaPontos = 0;
     const limites = [144000, 7200, 360, 20, 1]
-    let final = "";
+    let final = [];
+    let integra = false;
     // final = symbols["4"] + symbols["1"] + symbols["3"]
 
     const loopDedutor = (x) => {
@@ -55,29 +56,38 @@ function paraMaia(num) {
     }
     // DEPURAR A FUNÇÃO ABAIXO!!!
     const criaSimbolo = (pontos) => {
-        let stringBase = "";
+        if(pontos !== 0) {
+            integra = true
+            
+        } else {
+            
+        }
+        let stringBase = [];
+        if(pontos === 0 && integra === true) {
+            stringBase.unshift(symbols["0"])
+        }
         while(pontos > 0) {
-            if(pontos === 0) {
-                stringBase += symbols["0"]
-            }
-            if(pontos > 5) {
+            if(pontos > 5 && integra === true) {
                 while(pontos >= 5) {
                     pontos -= 5
-                    stringBase += symbols["5"] 
+                    stringBase.unshift(symbols["5"])
                 }
             } 
 
             if (pontos < 5){
                 for(let key in symbols) {
-                    if(Number(key) === pontos) {
+                    if(Number(key) === pontos && integra === true) {
                         pontos -= Number(key)
-                        stringBase += symbols[key]
+                        stringBase.unshift(symbols[key])
                     }
                 }
             }
         }
-        stringBase += symbols.pula
-        final += stringBase
+        stringBase.unshift(symbols.pula)
+        
+        for(let carac in stringBase) {
+            final += stringBase[carac]
+        }
     }
     
     const deduz = () => {
@@ -129,5 +139,5 @@ function paraMaia(num) {
     console.log(final)
 }
 
-paraMaia(360)
-// paraMaia(1794)
+//paraMaia(360)
+paraMaia(1794)
