@@ -2,11 +2,14 @@
 // crie duas funções, uma que codifique um número decimal em um número maia, e outro que codifique um número maia em um número decimal
 
 function paraDecimal(str) {
-    
     str = String(str)
     str = str.split("\n")
+    let strTemporaria = [];
+    for(let linha = str.length - 1; linha >=  0; linha-- ) {
+        strTemporaria.push(str[linha])
+    }
+    str = strTemporaria
     const basesNumericas = [1, 20, 360, 7200, 144000, 2880000]
-    
     let indiceBase = 0
     let resultado = 0;
     let contaNumeros = 0
@@ -21,7 +24,7 @@ function paraDecimal(str) {
         contaNumeros += contaPontos
         } else if(linha.includes('-')){
             contaNumeros += 5
-        } else if(linha.includes('0')) {
+        } else if(linha.includes('O')) {
             contaNumeros += 0
         } else {
             resultado += contaNumeros * basesNumericas[indiceBase]
@@ -31,13 +34,16 @@ function paraDecimal(str) {
     }
     return resultado += contaNumeros * basesNumericas[indiceBase]
 }
+
+// console.log(paraDecimal("  .  \n     \n  0  "))
+// console.log(paraDecimal('  .  \n     \n  O  '))
 // console.log(paraDecimal("  .  \n-----\n-----\n     \n   0   \n     \n-----")) //1811
 //console.log(paraDecimal(" ..  \n-----\n     \n  0  \n     \n  .  \n     \n  0  \n     \n  .  "))
-console.log(paraDecimal("-----\n     \n"))
+
 
 function paraMaia(num) { 
     const symbols = {
-        "0": "  0  \n",
+        "0": "  O  \n",
         "1": "  .  \n",
         "2": " ..  \n",
         "3": " ... \n",
@@ -45,6 +51,7 @@ function paraMaia(num) {
         "5": "-----\n",
         pula: "     \n"
     }
+    let toContinue = true;
     let contaPontos = 0;
     const limites = [144000, 7200, 360, 20, 1]
     let final = [];
@@ -83,7 +90,7 @@ function paraMaia(num) {
     }
     const deduz = () => {
         if(num <= 2880000 && num >= 14400){
-            loopDedudor(limites[0])
+            loopDedutor(limites[0])
             criaSimbolo(contaPontos)
         } else {
             criaSimbolo(0)
@@ -106,30 +113,40 @@ function paraMaia(num) {
         } else {
             criaSimbolo(0)
         }
-        if(num <= 19){
+        if(num <= 19 && num > 0){
             loopDedutor(limites[4])
             criaSimbolo(contaPontos)      
-        } else {
+        }
+        if(num === 0) {
             criaSimbolo(0)
+        }
+        toContinue = false
+    }
+    if(num === 0) {
+        criaSimbolo(0)
+        return final
+    } else {
+        while(num !== 0) {
+            deduz()
         }
     }
     
-    while(num > 0) {
-        deduz()
-    }
     final = String(final)
     final = final.split("\n")
-    while(true) {
-        if(final[0] === "     " || final[0] === "  0  ") {
+    final.splice(final.length - 1, 1)
+    while(final.length > 1) {
+        if(final[0] === "     " || final[0] === "  O  ") {
             final.splice(0, 1)
         } else {
             break
         }
     }
-    final.splice(final.length - 1, 1)
     return final.join('\n')
 }
-// console.log(paraMaia(360))
+
+//console.log(paraMaia(0))
+console.log(paraMaia(2))
+//console.log(paraMaia(360))
 // console.log("---------------------------------------------------------------")
 // console.log(paraMaia(1794))
-console.log(paraMaia(653))
+//console.log(paraMaia(653))
