@@ -1,3 +1,46 @@
+"use strict"
+// crie duas funções, uma que codifique um número decimal em um número maia, e outro que codifique um número maia em um número decimal
+
+function paraDecimal(str) {
+    str = String(str)
+    str = str.split("\n")
+    let strTemporaria = [];
+    for(let linha = str.length - 1; linha >=  0; linha-- ) {
+        strTemporaria.push(str[linha])
+    }
+    str = strTemporaria
+    const basesNumericas = [1, 20, 360, 7200, 144000, 2880000]
+    let indiceBase = 0
+    let resultado = 0;
+    let contaNumeros = 0
+    for(let linha of str) {
+        if(linha.includes('.')) {
+            let contaPontos = 0
+            for(let carac of linha) {
+                if(carac === ".") {
+                    contaPontos++
+                }
+            }
+        contaNumeros += contaPontos
+        } else if(linha.includes('-')){
+            contaNumeros += 5
+        } else if(linha.includes('O')) {
+            contaNumeros += 0
+        } else {
+            resultado += contaNumeros * basesNumericas[indiceBase]
+            indiceBase++
+            contaNumeros = 0
+        }
+    }
+    return resultado += contaNumeros * basesNumericas[indiceBase]
+}
+
+// console.log(paraDecimal("  .  \n     \n  0  "))
+// console.log(paraDecimal('  .  \n     \n  O  '))
+// console.log(paraDecimal("  .  \n-----\n-----\n     \n   0   \n     \n-----")) //1811
+//console.log(paraDecimal(" ..  \n-----\n     \n  0  \n     \n  .  \n     \n  0  \n     \n  .  "))
+
+
 function paraMaia(num) { 
     const symbols = {
         "0": "  0  \n",
@@ -77,6 +120,10 @@ function paraMaia(num) {
         }
     }
     
+    if(num === 0) {
+        final.push('  O  \n     ')
+    }
+    
     while(num > 0) {
         deduz()
     }
@@ -92,3 +139,11 @@ function paraMaia(num) {
     final.splice(final.length - 1, 1)
     return final.join('\n')
 }
+
+console.log(paraMaia(0))
+//console.log(paraMaia(2))
+//console.log(paraMaia(10))
+//console.log(paraMaia(360))
+// console.log("---------------------------------------------------------------")
+// console.log(paraMaia(1794))
+//console.log(paraMaia(653))

@@ -43,7 +43,7 @@ function paraDecimal(str) {
 
 function paraMaia(num) { 
     const symbols = {
-        "0": "  O  \n",
+        "0": "  0  \n",
         "1": "  .  \n",
         "2": " ..  \n",
         "3": " ... \n",
@@ -51,10 +51,9 @@ function paraMaia(num) {
         "5": "-----\n",
         pula: "     \n"
     }
-    let toContinue = true;
     let contaPontos = 0;
     const limites = [144000, 7200, 360, 20, 1]
-    let final = [];
+    let final = []
     const loopDedutor = (x) => {
         contaPontos = 0;
         while(num >= x){
@@ -90,7 +89,7 @@ function paraMaia(num) {
     }
     const deduz = () => {
         if(num <= 2880000 && num >= 14400){
-            loopDedutor(limites[0])
+            loopDedudor(limites[0])
             criaSimbolo(contaPontos)
         } else {
             criaSimbolo(0)
@@ -113,39 +112,37 @@ function paraMaia(num) {
         } else {
             criaSimbolo(0)
         }
-        if(num <= 19 && num > 0){
+        if(num <= 19){
             loopDedutor(limites[4])
             criaSimbolo(contaPontos)      
-        }
-        if(num === 0) {
+        } else {
             criaSimbolo(0)
-        }
-        toContinue = false
-    }
-    if(num === 0) {
-        criaSimbolo(0)
-        return final
-    } else {
-        while(num !== 0) {
-            deduz()
         }
     }
     
+    if(num === 0) {
+        final.push('  O  \n     ')
+    }
+
+    while(num > 0) {
+        deduz()
+    }
     final = String(final)
     final = final.split("\n")
-    final.splice(final.length - 1, 1)
-    while(final.length > 1) {
-        if(final[0] === "     " || final[0] === "  O  ") {
+    while(true) {
+        if(final[0] === "     " || final[0] === "  0  ") {
             final.splice(0, 1)
         } else {
             break
         }
     }
+    final.splice(final.length - 1, 1)
     return final.join('\n')
 }
 
-//console.log(paraMaia(0))
-console.log(paraMaia(2))
+console.log(paraMaia(0))
+//console.log(paraMaia(2))
+//console.log(paraMaia(10))
 //console.log(paraMaia(360))
 // console.log("---------------------------------------------------------------")
 // console.log(paraMaia(1794))
