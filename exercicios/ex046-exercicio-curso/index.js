@@ -1,36 +1,24 @@
 "use strict"
-console
 // Crie uma função que calcule a média, ela deve ser capaz de receber um ou mais valores numéricos, deve retornar somente um número sendo este a média, deve gerar um erro se receber um parâmetro não numérico e deve retornar zero caso não receba nenhum parâmetro.
 
 function media() {
-    
+    let contador = 0;
     if(arguments.length === 0) {
         return 0
     }
-
-    let nums = []
-    for(let c of arguments){
-        nums.push(c)
-    }
-
-    
-
-    try {
-        const isValid = nums.every(function(x){
-            return isNaN(x)
-        })
-        if(isValid === true) {
-            throw new Error('precisa ser um número')
+    let nums = Array.from(arguments)
+    const isValid = nums.every(function(x){
+        return !isNaN(x)
+    })
+    if(isValid === false) {
+        throw new Error('Os valores passados precisam ser numéricos.')
+    } else {
+        for(let num of nums){
+            contador += num
         }
-    } catch(e) {
-        console.error(e)
+        return contador / nums.length
     }
-
-    console.log(nums)
-
 }
 
-//console.log("a" === NaN)
-media("a","b","c")
-//media(1, 2, 3, 4)
-//console.log(media())
+console.log(media(7, 7, 7, 9))
+console.log(media("a", 1, 2, 'd'))

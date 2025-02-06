@@ -1,7 +1,0 @@
-//inputs
-
-console.log(paraDecimal("  .  \n-----\n-----\n     \n   0   \n     \n-----")) //1811
-console.log(paraDecimal("-----\n-----\n-----\n ... \n     \n-----\n-----\n  .  \n     \n-----\n     \n  0  \n     \n-----\n-----\n-----\n     \n-----\n.... ")) //28082038
-console.log(paraDecimal("  0  \n     \n  0  \n     \n  0  \n     \n  .  ")) //7200
-console.log(paraDecimal("-----\n-----\n-----\n  .  \n  .  \n  .  \n  .  \n     \n-----\n-----\n-----\n  .  \n  .  \n     \n-----\n-----\n-----\n  .  \n  .  \n  .  \n  .  "))//7199
-console.log(paraDecimal("-----\n-----\n  .  \n     \n  0  \n     \n-----\n-----\n-----\n  .  \n  .  \n  .  ")) //6491
