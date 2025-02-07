@@ -89,7 +89,7 @@ function paraMaia(num) {
     }
     const deduz = () => {
         if(num <= 2880000 && num >= 14400){
-            loopDedudor(limites[0])
+            loopDedutor(limites[0])
             criaSimbolo(contaPontos)
         } else {
             criaSimbolo(0)
@@ -122,7 +122,7 @@ function paraMaia(num) {
     if(num === 0) {
         return '  O  '
     }
-    while(num > 0) {
+    while(num > 0 && num <= 2880000){
         deduz()
     }
     final = String(final)
@@ -144,4 +144,5 @@ console.log(paraMaia(1000))
 // console.log("---------------------------------------------------------------")
 // console.log(paraMaia(1794))
 //console.log(paraMaia(653))
+console.log(paraMaia(500))
 
