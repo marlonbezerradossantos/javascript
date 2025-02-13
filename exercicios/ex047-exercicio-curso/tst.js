@@ -1,15 +1,12 @@
 "use strict"
 //crie uma função que receba o peso e altura e retorne o IMC, ela deve gerar um erro se caso não receber parâmetro ou se caso não receber algum dos parâmetros necessários. Ela deve ser retornada em uma outra função que deve retornar uma classificação baseado no IMC da pessoa.
 
-function imc(peso, altura, cb){
+function imc(peso, altura){
     if(isNaN(peso) || isNaN(altura)) {
         throw Error('n passou')
     }
-    if(typeof cb === "function"){
-        return cb((peso / (altura ** 2)).toFixed(1))
-    } else {
-        return (peso / (altura ** 2)).toFixed(1)
-    }
+    return (peso / (altura ** 2)).toFixed(1)
+    
 }
 
 function classificacao(imc) {
@@ -29,5 +26,4 @@ function classificacao(imc) {
         }
     }
 }
-//console.log(classificacao(imc(80, 10)))
-console.log(imc(10, 10, classificacao))
+console.log(classificacao(imc(80, 1.78)))
