@@ -17,6 +17,7 @@ function bathhouse(capacity, events) {
     for(let event of events) { //itera sobre todos os eventos
         
         if(Number.isInteger(Number(event))) {
+            //identifica eventos de saída
             for(let exit of acceptedGroups) {
                 if(exit.id === Number(event)) {
                     situation[0] -= exit['M'] + exit['m']
@@ -49,6 +50,14 @@ function bathhouse(capacity, events) {
             for(let iterateGroups in groups) { //aqui vemos quantas pessoas tentam entrar
                 totalPeople += groups[iterateGroups]
             }
+            
+            if(groups['M'] === 0 && groups['m'] > 0) {
+                groups['f'] += groups['m']
+                groups['m'] = 0
+            } else if(groups['F'] === 0 && groups['f'] > 0) {
+                groups['m'] += groups['f'] 
+                groups['f'] = 0
+            }
 
             if(groups['M'] === 0 && groups['F'] === 0) { //Garantimos que há ao menos um 
                 approved = false                         //adulto para acompanhar crianças.
@@ -65,12 +74,23 @@ function bathhouse(capacity, events) {
                 approved = false
             }
 
+
             const sections = [[groups['M'], groups['m']], [groups['F'], groups['f']]]
             const gendersControl = []
             
             let childsLeftover = [0, 0];
             function distribui(n) {
                 let distribute = 0
+
+                // if(sections[n][0] === 0 && sections[n][1] > 0) {
+                //     if(n === 0) {
+                //         sections[1][1] += sections[n][1]
+                //         sections[n][1] = 0
+                //     } else {
+                //         sections[0][1] += sections[n][1]
+                //         sections[n][1] = 0
+                //     }
+                // }
 
                 if(sections[n][0] >= 1) {  //separamos 1 adulto para as crianças
                     distribute += 1
@@ -121,7 +141,7 @@ function bathhouse(capacity, events) {
     return final;
 }
 
-console.log(bathhouse(5, ["Mmmf", "Fmm", "2", "Mff", "1"]))
-
+console.log(bathhouse(5, ["Mmmf", "Fmm", "2", "Mff", "1", "3"]))
+//expected: [[4,0], [4,3], [4,0], [4,0], [0,0]] 
 
 // no teste acima deu errado porque não havia adulto para supervisionar a menina na outra seção, teremos de criar outra validação de alguma forma (fica pra você ae)
