@@ -1,9 +1,9 @@
 (function(){
     const elementoPai = document.querySelector('.content-section')
+    console.log(elementoPai.lastElementChild)
     const newElement = document.createElement("p")
-    newElement.className = 'parag'
+    newElement.className = 'card card2'
     newElement.innerHTML = 'Hello World!'
-    const card2 = document.querySelector('.card-2')
-    elementoPai.insertBefore(newElement, card2)
-    console.log(newElement.textContent)
+    elementoPai.appendChild(newElement)
+
 })()

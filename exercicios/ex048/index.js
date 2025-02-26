@@ -42,7 +42,7 @@ function bathhouse(capacity, events) {
                     }
                 }
             }
-
+            
             
             
             // DAQUI PRA BAIXO SERÃO FEITAS AS VALIDAÇÕES
@@ -50,7 +50,9 @@ function bathhouse(capacity, events) {
             for(let iterateGroups in groups) { //aqui vemos quantas pessoas tentam entrar
                 totalPeople += groups[iterateGroups]
             }
-            
+           
+
+            //aqui verificamos se há adulto do mesmo genero das crianças do grupo, se não houver e houver um adulto do genero oposto entao a criança é colocada junto do responsavel
             if(groups['M'] === 0 && groups['m'] > 0) {
                 groups['f'] += groups['m']
                 groups['m'] = 0
@@ -58,6 +60,8 @@ function bathhouse(capacity, events) {
                 groups['m'] += groups['f'] 
                 groups['f'] = 0
             }
+
+           
 
             if(groups['M'] === 0 && groups['F'] === 0) { //Garantimos que há ao menos um 
                 approved = false                         //adulto para acompanhar crianças.
@@ -69,15 +73,32 @@ function bathhouse(capacity, events) {
                 approved = false
             }
 
-            if(groups['M'] + situation[0] > capacity ||
-            groups['F'] + situation[1] > capacity) {
+            
+
+            if(groups['M'] + groups['m'] + situation[0] > capacity ||
+            groups['F'] + groups['f'] + situation[1] > capacity) {
+                //aqui verificamos se há espaço em cada seção por genero
                 approved = false
+                let mens = groups['M'] + groups['m']
+                let womans = groups['F'] + groups['f']
+                console.log(mens, womans)                  // AAAAAAAAAAAAAAAAAAAAAAAAAAAAHHHHHHHH!!!!!!!!!
+                if(mens > womans) {
+                    let control = mens - capacity
+                    mens -= control
+                    womans += control
+                } else if(womans > mens) {
+                    let control = womans - capacity
+                    womans -= control
+                    mens += control
+                }
+                console.log(mens, womans)
             }
 
-
-            const sections = [[groups['M'], groups['m']], [groups['F'], groups['f']]]
-            const gendersControl = []
             
+        
+            const sections = [[groups['M'], groups['m']], [groups['F'], groups['f']]]
+            
+            const gendersControl = []
             let childsLeftover = [0, 0];
             function distribui(n) {
                 let distribute = 0
@@ -114,6 +135,9 @@ function bathhouse(capacity, events) {
                 gendersControl.push(distribui(gender))
                 
             }
+
+            
+
             // agora distribuiremos os leftovers e se caso não houver jeito de equilibrar as seções, vamos dar um FALSE para o "approved" o que irá negar a entrada no grupo
             if(childsLeftover[0] > 0) {
                 gendersControl[1] += childsLeftover[0] 
@@ -121,7 +145,8 @@ function bathhouse(capacity, events) {
                 gendersControl[0] += childsLeftover[1]
             }
             
-        
+
+            
             // se chegar aqui como FALSE o grupo será negado e nenhum número será atribuido
            if(approved === true) {
                 //console.log('grupo aceito:', gendersControl)
@@ -141,7 +166,7 @@ function bathhouse(capacity, events) {
     return final;
 }
 
-console.log(bathhouse(5, ["Mmmf", "Fmm", "2", "Mff", "1", "3"]))
-//expected: [[4,0], [4,3], [4,0], [4,0], [0,0]] 
+console.log(bathhouse(5, ["MFmf", "MmFfff", "1", "2"]))
+//                        [[2,2], [5,5], [3,3], [0,0]]
 
 // no teste acima deu errado porque não havia adulto para supervisionar a menina na outra seção, teremos de criar outra validação de alguma forma (fica pra você ae)
