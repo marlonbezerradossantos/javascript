@@ -15,13 +15,14 @@ function bathhouse(capacity, events) {
     const situation = [0, 0]
     let id = 1;
     for(let event of events) { //itera sobre todos os eventos
-        console.log(acceptedGroups)
+        
         if(Number.isInteger(Number(event))) {
             //identifica eventos de saída
             for(let exit of acceptedGroups) {
                 if(exit.id === Number(event)) {
-                    situation[0] -= exit['M'] + exit['m']
-                    situation[1] -= exit['F'] + exit['f']
+                   
+                    situation[0] -= exit['M']
+                    situation[1] -= exit['F']
                 }
             }
             
@@ -54,6 +55,23 @@ function bathhouse(capacity, events) {
            
 
             //aqui verificamos se há adulto do mesmo genero das crianças do grupo, se não houver e houver um adulto do genero oposto entao a criança é colocada junto do responsavel
+            
+            //console.log(groups)
+            
+            
+            
+            if(groups['M'] === 0 && groups['F'] === 0) { //Garantimos que há ao menos um 
+                approved = false                         //adulto para acompanhar crianças.
+            }
+            
+            const situationTotalSpace = situation[0] + situation[1];
+            if(situationTotalSpace + totalPeople > capacity * 2) { 
+                //garantimos que há espaço para todos nas seções independentemente de gênero
+                approved = false
+            }
+
+            
+            
             if(groups['M'] === 0 && groups['m'] > 0) { //se não houver homem para acompanhar o(s) menino(s)
                 groups['f'] += groups['m']
                 groups['m'] = 0
@@ -62,19 +80,21 @@ function bathhouse(capacity, events) {
                 groups['f'] = 0
             }
 
-           
-
-            if(groups['M'] === 0 && groups['F'] === 0) { //Garantimos que há ao menos um 
-                approved = false                         //adulto para acompanhar crianças.
+            if(groups['M'] + groups['m'] > situation[0] ||
+                groups['F'] + groups['f'] > situation[1]
+            ) {
+                console.log('sla')
             }
+            
+            // if(groups['M'] + groups['m'] + situation[0] > capacity ||
+            //     groups['F'] + groups['f'] + situation[1] > capacity) {
+            //         //aqui verificamos se há espaço em cada seção por genero
+            //         approved = false
+            // } 
 
-            const situationTotalSpace = situation[0] + situation[1];
-            if(situationTotalSpace + totalPeople > capacity * 2) { 
-                //garantimos que há espaço para todos nas seções independentemente de gênero
-                approved = false
-            }
 
             const sections = [[groups['M'], groups['m']], [groups['F'], groups['f']]] //[[1,2], [3,4]]
+           
             
             const gendersControl = []
             let childsLeftover = [0, 0];
@@ -94,17 +114,19 @@ function bathhouse(capacity, events) {
                 
                 if(distribute + sections[n][1] > capacity) {
                     //validamos se há espaço suficiente para uma seção por gênero e separamos as crianças que sobraram em uma variavel global
-                  
-                    
                     console.log('caiu aqui')
                     childsLeftover[n] = (sections[n][1] + distribute) - 5
                     return 5
                     
                 } else if(distribute + sections[n][0] + sections[n][1] > capacity - situation[n]) {
                     //console.log((distribute + sections[n][0] + sections[n][1]) - (capacity - situation[n]))
-                    childsLeftover[n] = (distribute + sections[n][0] + sections[n][1]) - (capacity - situation[n])
-                    
-                    return (distribute + sections[n][0] + sections[n][1]) - childsLeftover[n]
+                    //if(situation[0] === capacity || situation[1] === capacity) {
+                       // approved = false
+                   // } else {
+                        childsLeftover[n] = (distribute + sections[n][0] + sections[n][1]) - (capacity - situation[n])
+                        return (distribute + sections[n][0] + sections[n][1]) - childsLeftover[n]
+                   // }
+
                 } else {
                     distribute += sections[n][0] + sections[n][1] 
                     return distribute
@@ -139,8 +161,13 @@ function bathhouse(capacity, events) {
                 situation[0] += gendersControl[0]
                 situation[1] += gendersControl[1]
                 groups.id = id
+                const accepted = {
+                    M: gendersControl[0],
+                    F: gendersControl[1],
+                    id: id
+                }
                 id++
-                acceptedGroups.push(groups)
+                acceptedGroups.push(accepted) //tentaremos ao invés de enviar o obj grpups, enviar o gendersControl
                 
            }
         } 
@@ -151,7 +178,7 @@ function bathhouse(capacity, events) {
     return final;
 }
 
-console.log(bathhouse(5, ["MFmf", "MmFfff", "1", "2"]))
-//                        [[2,2], [5,5], [3,3], [0,0]]
+console.log(bathhouse(5, ["Mmmf", "Fmm", "2", "Mff", "1"]))
+//                       [4,0], [4,3], [4,0], [4,0], [0,0] 
 
 //agora nó precisamos alterar o objeto, transferir a criança q foi pro genero oposto para o grupo onde ela foi

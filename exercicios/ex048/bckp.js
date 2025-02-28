@@ -1,14 +1,3 @@
-"use strict"
-// criar descrição dps tee hee
-
-/*
-name: "Family night. Jane, you go with dad and your little brother.",
-capacity: 5, 
-events: ["MFmf", "MmFfff", "1", "2"],
-expected: [[2,2], [5,5], [3,3], [0,0]] 
-*/
-
-// bathhouse(5, ["MFmf", "MmFfff", "1", "2"])
 function bathhouse(capacity, events) {
     let final = []
     const acceptedGroups = []
@@ -50,14 +39,18 @@ function bathhouse(capacity, events) {
             for(let iterateGroups in groups) { //aqui vemos quantas pessoas tentam entrar
                 totalPeople += groups[iterateGroups]
             }
+            
 
-            // if(groups['M'] === 0 && groups['m'] > 0) {
-            //     groups['f'] += groups['m']
-            //     groups['m'] = 0
-            // } else if(groups['F'] === 0 && groups['f'] > 0) {
-            //     groups['m'] += groups['f'] 
-            //     groups['f'] = 0
-            // }
+            //aqui verificamos se há adulto do mesmo genero das crianças do grupo, se não houver e houver um adulto do genero oposto entao a criança é colocada junto do responsavel
+            if(groups['M'] === 0 && groups['m'] > 0) {
+                groups['f'] += groups['m']
+                groups['m'] = 0
+            } else if(groups['F'] === 0 && groups['f'] > 0) {
+                groups['m'] += groups['f'] 
+                groups['f'] = 0
+            }
+
+           
 
             if(groups['M'] === 0 && groups['F'] === 0) { //Garantimos que há ao menos um 
                 approved = false                         //adulto para acompanhar crianças.
@@ -69,8 +62,11 @@ function bathhouse(capacity, events) {
                 approved = false
             }
 
-            if(groups['M'] + situation[0] > capacity ||
-            groups['F'] + situation[1] > capacity) {
+            
+
+            if(groups['M'] + groups['m'] + situation[0] > capacity ||
+            groups['F'] + groups['f'] + situation[1] > capacity) {
+                //aqui verificamos se há espaço em cada seção por genero
                 approved = false
             }
 
@@ -140,8 +136,4 @@ function bathhouse(capacity, events) {
     
     return final;
 }
-
-console.log(bathhouse(5, ["Mmmf", "Fmm", "2", "Mff", "1"]))
-//expected: [[4,0], [4,3], [4,0], [4,0], [0,0]] 
-
-// no teste acima deu errado porque não havia adulto para supervisionar a menina na outra seção, teremos de criar outra validação de alguma forma (fica pra você ae)
+console.log(bathhouse(5, [[2,2], [5,5], [3,3], [0,0]]))
