@@ -20,7 +20,6 @@ function bathhouse(capacity, events) {
             }
 
         } else { //identifica eventos de entrada
-    
             const atualGroup = {
                 "m": 0,
                 "f": 0,
@@ -70,11 +69,11 @@ function bathhouse(capacity, events) {
             if(atualGroup['M'] + atualGroup['m'] + situation[0] > capacity ||
             atualGroup['F'] + atualGroup['f'] + situation[1] > capacity) {
                 const enteringGroupSituation = [atualGroup['M'] + atualGroup['m'], atualGroup['F'] + atualGroup['f']]
-                if(enteringGroupSituation[1] + situation[1] > capacity && atualGroup['M'] > 0) {
+                if(enteringGroupSituation[1] + situation[1] > capacity && atualGroup['m'] > 0) {
                     const leftoverChild = enteringGroupSituation[1] + situation[1] - capacity
                     atualGroup['f'] -= leftoverChild
                     atualGroup['m'] += leftoverChild
-                } else if(enteringGroupSituation[0] + situation[0] > capacity && atualGroup['F'] > 0) {
+                } else if(enteringGroupSituation[0] + situation[0] > capacity && atualGroup['f'] > 0) {
                     const leftoverChild = enteringGroupSituation[0] + situation[0] - capacity
                     atualGroup['m'] -= leftoverChild
                     atualGroup['f'] += leftoverChild
@@ -132,9 +131,10 @@ function bathhouse(capacity, events) {
         } 
         final.push([situation[0], situation[1]])
     }
+    console.log(final)
     return final;
 }
 
-console.log(bathhouse(5, [["FFfF","1","MmffF","m","2","FFF","3","mfm","FMFMFFFF"]]))
+console.log(bathhouse(3, ["fFFf","mMf","fF","fmmm","M","ff","1","MFf","mMFF","F","3","Mm","2","f","fff","FFMM","fff","FFFF","MM","F","4","Mm","5","6"]))
  
 
