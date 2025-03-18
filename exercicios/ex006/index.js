@@ -6,3 +6,4 @@ function something(a) {
 }
 
 console.log(something("entrou no meu sapato!"));
+

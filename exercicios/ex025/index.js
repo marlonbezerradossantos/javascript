@@ -24,6 +24,6 @@ function contaDuplicados(str) {
     }
     return duplicados;
 }
-console.log(contaDuplicados('ABbA'))
+console.log(contaDuplicados('ABbcA'))
 
 

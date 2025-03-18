@@ -1,7 +1,6 @@
 // Escreva uma função que receberá 2 strings onde a primeira terá todas as suas letras convertidas para title-case(todas as primeiras letras maiusculas), e a segunda conterá outra string com palavras de exceção que terão todas as letras minusculas exceto pela primeira palavra da string.
 
 function titleCase(str, min = '#') {
-    console.log(min.length)
     min = min.toLowerCase().split(' ');
     str = str.toLowerCase().split(' ');
     function maiuscula(e) {

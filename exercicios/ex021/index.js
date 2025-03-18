@@ -17,5 +17,5 @@ function raizDoDigito(n) {
     return soma
 }
 
-console.log(raizDoDigito(493193))
+console.log(raizDoDigito(49319356644441448))
 

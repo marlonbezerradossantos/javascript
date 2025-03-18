@@ -6,3 +6,4 @@ function resto (x, y) {
 };
 
 console.log(resto(5, 5));
+console.log(resto(10, 9))

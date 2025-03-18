@@ -78,4 +78,4 @@ switch(mes) {
         break;
 }
 
-display.innerHTML = `${diaSemana}, ${dia} de ${mes} de ${ano} ${hora}:${min}`
+display.innerHTML = `${diaSemana}, ${dia} de ${mes} de ${ano} | ${hora}:${min}`
