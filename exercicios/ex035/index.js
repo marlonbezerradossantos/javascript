@@ -18,4 +18,3 @@ function comparaArray(arr1, arr2) {
 console.log(comparaArray([1, 2, 3], [4, 5, 6])) // 9 porque (9 + 9 + 9) / 3
 console.log(comparaArray([10, 20, 10, 2], [10, 25, 5, -2]))
 console.log(comparaArray([-1, 0], [0, -1]))
-is

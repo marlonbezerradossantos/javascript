@@ -17,8 +17,8 @@ function decode(str) {
     const vogais = ["a", "e", "i", "o", "u"];
     str = str.split("");
     for(c in str) {
-        for(i in vogais) {
-            if(str[c] === i){
+        for(i = 1; i < vogais.length + 1; i++) {
+            if(str[c] == i){
                 str[c] = vogais[i-1]
             }
         }

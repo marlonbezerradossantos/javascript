@@ -14,7 +14,6 @@ function somaIntervalos(arr) {
         x.push(bckp)
     })
     
-    
 //////////////////////////////
     for(c of arr) {
         for(i of c) {
