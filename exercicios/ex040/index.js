@@ -24,6 +24,4 @@ function rot13(str) {
    return str
 }
 console.log(rot13(texto))
-
-
 // uma forma de aplicar a função soma13 e substituir os caracteres somente nas letras ignorando espaços e etc
