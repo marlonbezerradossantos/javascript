@@ -137,12 +137,12 @@ function paraMaia(num) {
     final.splice(final.length - 1, 1)
     return final.join('\n')
 }
-console.log(paraMaia(1000))
+console.log(paraMaia(19))
 //console.log(paraMaia(2))
 //console.log(paraMaia(10))
 //console.log(paraMaia(360))
 // console.log("---------------------------------------------------------------")
 // console.log(paraMaia(1794))
 //console.log(paraMaia(653))
-console.log(paraMaia(500))
+//console.log(paraMaia(500))
 

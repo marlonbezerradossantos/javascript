@@ -1,5 +1,4 @@
 // "Como você consegue diferenciar um introvertido de um extrovertido na NSA?" -> "Va gur ryringbef, gur rkgebireg ybbxf ng gur BGURE thl'f fubrf."
-
 // Seu trabalho é desenvolver uma função que decodifique a resposta da piada usando o ROT-13, uma cifra de césar cujo a chave é mover 13 casas do alfabeto.
 
 let texto = "Va gur ryringbef, gur rkgebireg ybbxf ng gur BGURE thl'f fubrf."
