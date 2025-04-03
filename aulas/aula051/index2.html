@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>secundario</h1>
+    <a href="index.html">Voltar</a>
+    <div></div>
+    <script>
+        const container = document.querySelector('div')
+        const num = sessionStorage.getItem("numero")
+        const nome = sessionStorage.getItem("nome")
+        container.innerHTML = `${num} e ${nome}`
+    </script>
+</body>
+</html>

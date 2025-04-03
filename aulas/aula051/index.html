@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>principal</h1>
+    <p>Clique no botão abaixo para ver os valores em outra página</p>
+    <a href="index2.html">Avançar</a>
+    <script>
+        const num = prompt("digite um numero")
+        const nome = prompt('digite seu nome')
+        sessionStorage.setItem("numero", num)
+        sessionStorage.setItem("nome", nome)
+    </script>
+</body>
+</html>
