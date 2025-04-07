@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Titulo</h1>
+    <p>descrição Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maxime saepe nihil illo iusto magnam aspernatur unde minima reiciendis accusantium, ut possimus quidem veritatis id, dolores quam! Asperiores distinctio aspernatur debitis!</p>
+    <p saudacao="true">ola mundo</p>
+    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iusto iure, autem eligendi modi dignissimos, aspernatur saepe in beatae recusandae temporibus mollitia obcaecati reprehenderit aliquid nemo neque quo velit officia quisquam?</p>
+    <p saudacao="true">hello world</p>
+    <script>
+        const saudacoes = document.querySelectorAll("[saudacao]")
+        const atributo1 = saudacoes[0].getAttribute("saudacao")
+        const atributo2 = saudacoes[1].getAttribute("saudacao")
+        console.log(atributo1)
+        console.log(atributo2)
+    </script>
+</body>
+</html>
